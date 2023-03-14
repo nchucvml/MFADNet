@@ -1,7 +1,8 @@
 
 # MFADNet
 
-This is the website reserved for MFADNet released code
+This is the website reserved for MFADNet released code.
+The paper is under review. The source code will be available after paper acceptance.
 # 
 ## Multiple Field-Of-View Based Attention Driven Network(MFADNet) For Weakly-Supervised Common Bile Duct Stone Detection
 
