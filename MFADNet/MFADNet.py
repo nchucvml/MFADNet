@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jun 27 2018
-
-@author: longang
-"""
 
 import tensorflow.keras as keras
 from tensorflow.keras.models import Model

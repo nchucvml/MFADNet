@@ -16,9 +16,6 @@ cur_dir = os.getcwd()
 os.chdir(cur_dir)
 sys.path.append(cur_dir)
 
-# set maximum recursion depth
-# sys.getrecursionlimit()
-# sys.setrecursionlimit(5000)
 
 # =============================================================================
 #  For reprodocable results, from keras.io
@@ -46,8 +43,6 @@ import gc
 from datetime import datetime
 from matplotlib import pyplot as plt
 from scipy import sparse 
-
-# Few training frames, it may fit in memory
 def getData(train_dir, dataset_dir):
     
     void_label = -1. # non-ROI
@@ -173,9 +168,10 @@ def train(data, scene, mdl_path, vgg_weights_path):
     img_shape = data[0][0].shape #(height, width, channel)
     fsn = MFADNet(lr, img_shape, scene, vgg_weights_path, loss_weights)
     fsn.initModel('CDnet')
+    fsn.model.summary()
     fsn.mdl_compile()
     model = fsn.model
-
+    
     early = keras.callbacks.EarlyStopping(monitor='val_loss', min_delta=1e-4, patience=10, verbose=0, mode='auto')
     redu = keras.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=5, verbose=1, mode='auto')
     # model.fit(X_train, {'frame_output':FY_train, 'class_output':DY_train, 'GAP': DY_train}, validation_data=(X_test, {'frame_output':FY_test, 'class_output':DY_test, 'GAP': DY_test}), epochs=max_epoch, batch_size=batch_size, 

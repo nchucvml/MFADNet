@@ -1,9 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jul  7 11:46:26 2022
-
-@author: ya_han
-"""
 import os
 import cv2
 import numpy as np
@@ -49,17 +44,17 @@ def cam(model, x):
     e = model.get_layer('activation_7').output
     # e = model.get_layer('activation_17').output
         
-    # K.function() 讓我們可以藉由輸入影像至 `model.input` 得到 `last_conv_layer[0]` 的輸出值
+
     iterate = K.function([model.input], [e[0], last_conv_layer.output[0]])
     weight_value, conv_layer_output_value = iterate([x])
 
     # print(weight_value.shape)
     # print(conv_layer_output_value.shape)
-    # 將 feature map 乘以權重，等於該 feature map 中的某些區域對於該分類的重要性
+
     for i in range(weight_value.shape[0]):
         conv_layer_output_value[:, :, i] *= (weight_value[i])
         
-    # 計算 feature map 的 channel-wise 加總
+
     channel_heatmap = np.sum(conv_layer_output_value, axis=-1)
     
     # spatial attention
@@ -71,7 +66,13 @@ def cam(model, x):
 
     # result
     result_heatmap = np.multiply(channel_heatmap, spatial_heatmap)
-    # return [channel_heatmap, spatial_heatmap, result_heatmap], class_pred
+
+    mp=model.get_layer('frame_output').output
+    iterate = K.function([model.input], [mp[0]])
+    mp_weight_value = iterate([x])
+    mp_heatmap = np.reshape(mp_weight_value, channel_heatmap.shape)
+
+    result_heatmap = np.multiply((1-mp_heatmap), result_heatmap)
 
     return result_heatmap, class_pred
 
@@ -138,6 +139,7 @@ if __name__ == '__main__':
     CTFmdl = load_model(mdl_path, compile=False, custom_objects={'InstanceNormalization': InstanceNormalization, 'f_acc':f_acc, 'd_acc':d_acc}
                         ) #load the trained model
     #%%
+    print(CTFmdl)
     model_name = 'mdl_MFPM_cbd20220908095117'
     s_path = os.path.join('./MFADNet/test', model_name)
     if not os.path.exists(s_path):
