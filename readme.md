@@ -7,6 +7,8 @@ This is the website reserved for MFADNet released code.
 
 The paper is under review. The source code will be available after paper acceptance.
 
+This code is modified from https://github.com/lim-anggun/FgSegNet_v2
+Lim, L.A. & Keles, H.Y. Pattern Anal Applic (2019). https://doi.org/10.1007/s10044-019-00845-9
 
 ## Usage
 
