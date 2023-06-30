@@ -15,17 +15,24 @@ Lim, L.A. & Keles, H.Y. Pattern Anal Applic (2019). https://doi.org/10.1007/s100
 
 ## Usage
 
+Uut the dataset in ./MFADNet/new_datasets and the label in ./MFADNet/new_training_label
+
+The file format can be refer to exmple files in the folder
+
+## Instructions for Code:
+
+Train the model
 ```
 cd MFADNet
 train.py
 ```
-For save the output
+Save the output
 ```
 cd MFADNet
 train.py
 ```
 
-## Instructions for Code:
+
 ### Requirements
 The most important packages:
 ```
@@ -57,7 +64,6 @@ importlib-metadata      4.12.0
 ipython                 8.10.0
 jedi                    0.18.2
 joblib                  1.1.0
-keras                   2.9.0
 keras-contrib           2.0.8
 keras-nightly           2.5.0.dev2021032900
 Keras-Preprocessing     1.1.2
@@ -92,7 +98,6 @@ scikit-learn            1.1.1
 scipy                   1.8.1
 setuptools              63.4.1
 six                     1.16.0
-sklearn                 0.0
 stack-data              0.6.2
 tensorboard             2.9.1
 tensorboard-data-server 0.6.1
@@ -110,16 +115,6 @@ wheel                   0.37.1
 wincertstore            0.2
 wrapt                   1.14.1
 ```
-### Training
-
-### Testing
-
-### Comparisons with State-of-the-art Methods (%)
-
-
-
-
-
 
 ## Reference 
 
