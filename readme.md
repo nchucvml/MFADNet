@@ -5,7 +5,7 @@
 
 This is the website reserved for MFADNet released code.
 
-The paper is published in IEEE Journal of Translational Engineering in Health and Medicin, 2023
+The paper is published in IEEE Journal of Translational Engineering in Health and Medicine, 2023
 
 https://ieeexplore.ieee.org/document/10153581
 
