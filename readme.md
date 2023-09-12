@@ -15,7 +15,7 @@ Lim, L.A. & Keles, H.Y. Pattern Anal Applic (2019). https://doi.org/10.1007/s100
 
 ## Usage
 
-Uut the dataset in ./MFADNet/new_datasets and the label in ./MFADNet/new_training_label
+Put the dataset in ./MFADNet/new_datasets and the label in ./MFADNet/new_training_label
 
 The file format can be refer to exmple files in the folder
 
